@@ -4,10 +4,9 @@ const elts = {
 };
 
 const texts = [
-    "If you",
-    "have read",
-    "this sentence",
-    "scroll down!!"
+    "web_dev ",
+    "ui_ux",
+    "web3"
 
 ];
 
