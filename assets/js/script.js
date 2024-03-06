@@ -4,9 +4,11 @@ const elts = {
 };
 
 const texts = [
-    "Front End Dev",
-    "Electronic Musician",
-    "UI/UX Designer"
+    "If you",
+    "have read",
+    "this sentence",
+    "scroll down!!"
+
 ];
 
 const morphTime = 1;
