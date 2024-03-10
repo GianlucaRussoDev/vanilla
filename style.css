@@ -21,7 +21,7 @@
 
 /* Container principale */
 .container {
-  height: 100vh;
+  height: 100svh;
   width: 100%;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
