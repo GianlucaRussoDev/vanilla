@@ -1,0 +1,397 @@
+/* Importazione del font Raleway */
+@import url("https://fonts.googleapis.com/css?family=Raleway:900&display=swap");
+
+/* Definizione dei colori personalizzati */
+:root {
+  --primary-color: #ea4a4a;       /* Rosso primario */
+  --secondary-color: #f7f4f3;     /* Colore secondario */
+  --accent-color: #e74c3c;        /* Rosso accentuato */
+  --background-color: #f7f4f3;    /* Colore di sfondo */
+  --text-color: #242221;          /* Colore del testo */
+}
+
+/* Regole generali */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+}
+
+/* Container principale */
+.container {
+  height: 100vh;
+  width: 100%;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth; /* Comportamento di scorrimento fluido */
+}
+
+/* Sezione */
+section {
+  padding: 8%;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  scroll-snap-align: start;
+  scroll-snap-stop: always; /* Assicura uno stop netto durante lo scorrimento */
+  scroll-padding: 100px; /* Aggiunge uno spazio minimo tra le sezioni per migliorare la percezione */
+}
+
+/* Contenitore del testo animato */
+.text-container {
+  position: relative;
+  width: 44vh; /* Larghezza fissa per il contenitore */
+  height: 16vh; /* Altezza sufficiente per contenere tutte le frasi */
+  overflow: hidden;
+}
+
+/* Stili del testo */
+.text {
+  margin-top: 20px;
+  font-family: monospace;
+  color: #000;
+  font-size: 24px; /* Dimensione predefinita del carattere */
+  white-space: pre-wrap;
+  overflow: hidden;
+  border-right: 2px solid var(--accent-color); /* Simula il cursore lampeggiante */
+}
+
+/* Animazione di scrittura */
+.text::after {
+  content: "";
+  display: block;
+  width: 0;
+  border-right: 2px solid black; /* Simula il cursore lampeggiante */
+  animation: typing 3s steps(60, end); /* Animazione della scrittura */
+}
+
+/* Animazione di scrittura */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Stili per la prima riga */
+.text-container:first-line {
+  font-size: 40px; /* Dimensione del carattere doppia per la prima riga */
+}
+
+/* Card One */
+.one {
+  color: var(--background-color);
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-evenly; /* Spaziatura uniforme */
+}
+
+/* Card Two */
+.two {
+  padding-left: 0%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--secondary-color);
+}
+
+/* Box della Card Two */
+.boxcard {
+  padding: 12%;
+  margin: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animazione */
+/* Stile del contenitore dell'oggetto animato */
+.animated-container {
+  background: radial-gradient(circle at -16% -16%, #ea4a4a, #f7f4f3); /* Sfondo con un gradiente radiale che va da hotpink a slateblue */
+  display: grid; /* Display grid per centrare l'oggetto */
+  height: 120px; /* Altezza e larghezza del contenitore a 200px */
+  width: 0px;
+  place-items: center; /* Posizionamento al centro del contenitore */
+  position: relative; /* Posizione relativa per l'oggetto assoluto */
+}
+
+/* Pseudoelemento ::before per creare l'oggetto animato */
+.animated-container::before {
+  animation: anim 30s infinite; /* Animazione che utilizza la chiave 'anim' definita successivamente */
+  background: radial-gradient(circle at 0% 0%, #ea4a4a, #ea4a4a); /* Sfondo con un gradiente radiale che va da hotpink a slateblue */
+  border-radius: 30% 70% 53% 47% / 26% 46% 54% 74%; /* Bordi arrotondati con valori specifici */
+  box-shadow: 0 -1.4vmin 2.8vmin var(--primary-color) inset,
+    0 0.35vmin 2.8vmin var(--primary-color) inset,
+    0 -1.4vmin 4.9vmin #ea4a4a inset; /* Ombre per creare effetto tridimensionale */
+  content: ""; /* Contenuto vuoto generato dal pseudoelemento */
+  filter: drop-shadow(0 0 1.05vmin var(--primary-color))
+    drop-shadow(0 1.75vmin 1.4vmin var(--primary-color))
+    drop-shadow(0.7vmin -0.7vmin 5.25vmin var(--primary-color))
+    drop-shadow(0 0 2.45vmin var(--primary-color)); /* Filtri per aggiungere ombre e effetti visivi */
+  height: 24vmin; /* Altezza e larghezza dell'oggetto animato a 50vmin */
+  width: 24vmin;
+  position: absolute; /* Posizionamento assoluto rispetto al contenitore */
+}
+
+/* Definizione dell'animazione 'anim' */
+@keyframes anim {
+  0%, 100% {
+    border-radius: 20% 80% 80% 20% / 50% 20% 80% 50%;
+    transform: scale(1); /* Nessuna deformazione al 0% e 100% */
+  }
+  10% {
+    border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
+    transform: scale(1.2) rotate(3deg); /* Leggera espansione del 20% al 10% con rotazione */
+  }
+  20% {
+    border-radius: 36% 64% 32% 68% / 35% 65% 35% 65%;
+    transform: scale(1.4) rotate(-3deg); /* Tornare alla forma originale con una deformazione maggiore e rotazione */
+  }
+  /* ... Altri frame con cambiamenti di border-radius e transform ... */
+  90% {
+    border-radius: 32% 68% 32% 68% / 40% 60% 40% 60%;
+    transform: scale(1.5) rotate(2deg); /* Leggera espansione del 20% al 90% con rotazione */
+  }
+}
+
+/* Card Three */
+.three {
+  background-color: var(--primary-color);
+}
+
+/* Input radio */
+input[type=radio] {
+  display: none;
+}
+
+/* Card */
+.card {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transition: transform .4s ease;
+  cursor: pointer;
+  border-radius: 10px;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Box del testo */
+.boxtext {
+  width: 50%;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Box del colore 1 */
+#colorbox1 {
+  height: 10vh;
+  width: 50%;
+  background-color: #83AFE1;
+}
+
+/* Box del colore 2 */
+#colorbox2 {
+  height: 10vh;
+  width: 50%;
+  background-color: var(--accent-color);
+}
+
+/* Box del colore 3 */
+#colorbox3 {
+  height: 10vh;
+  width: 50%;
+  background-color: #005CC5;
+}
+
+/* Container 3 */
+.container3 {
+  width: 100%;
+  max-width: 800px;
+  max-height: 600px;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Cards */
+.cards {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+/* Stili per i singoli item dei radio button */
+#item-1:checked ~ .cards #song-3,
+#item-2:checked ~ .cards #song-1,
+#item-3:checked ~ .cards #song-2 {
+  transform: translateX(-40%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+
+#item-1:checked ~ .cards #song-2,
+#item-2:checked ~ .cards #song-3,
+#item-3:checked ~ .cards #song-1 {
+  transform: translateX(40%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+
+#item-1:checked ~ .cards #song-1,
+#item-2:checked ~ .cards #song-2,
+#item-3:checked ~ .cards #song-3 {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+
+#item-1:checked ~ .cards #song-1 img,
+#item-2:checked ~ .cards #song-2 img,
+#item-3:checked ~ .cards #song-3 img {
+  box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
+}
+
+/* Player */
+.player {
+  background-color: #fff;
+  border-radius: 8px;
+  min-width: 320px;
+  padding: 16px 10px;
+}
+
+/* Parte superiore del player */
+.upper-part {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  height: 36px;
+  overflow: hidden;
+  padding-bottom: 40px;
+}
+
+/* Icona di play */
+.play-icon {
+  margin-right: 10px;
+}
+
+/* Informazioni sulla canzone */
+.song-info {
+  width: calc(100% - 32px);
+  display: block;
+}
+
+/* Titolo della canzone */
+.song-info .title {
+  color: #403d40;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+/* Sottotitolo e tempo */
+.sub-line {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.subtitle,
+.time {
+  font-size: 12px;
+  line-height: 16px;
+  color: #c6c5c6;
+}
+
+/* Tempo */
+.time {
+  font-size: 12px;
+  line-height: 16px;
+  color: #a5a5a5;
+  font-weight: 500;
+  margin-left: auto;
+}
+
+/* Barra di progresso */
+.progress-bar {
+  height: 3px;
+  width: 100%;
+  background-color: var(--text-color);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* Progresso */
+.progress {
+  display: block;
+  position: relative;
+  width: 60%;
+  height: 100%;
+  background-color: var(--text-color);
+  border-radius: 6px;
+}
+
+/* Area delle informazioni */
+.info-area {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 30px;
+  transition: transform .4s ease-in;
+}
+
+/* Animazione della trasformazione dell'area delle informazioni */
+#item-2:checked ~ .player #test {
+  transform: translateY(0);
+}
+
+#item-2:checked ~ .player #test {
+  transform: translateY(-40px);
+}
+
+#item-3:checked ~ .player #test {
+  transform: translateY(-80px);
+}
+
+/* Card Four */
+.four {
+  background-color: var(--secondary-color);
+}
+
+/* MEDIA QUERY PER iPHONE IN MODALITÀ VERTICALE */
+@media only screen and (max-device-width: 768px) and (orientation: portrait) {
+  /* Regole specifiche per iPhone in modalità verticale */
+}
+
+/* MEDIA QUERY PER iPAD IN MODALITÀ VERTICALE */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* Regole specifiche per iPad in modalità verticale */
+}

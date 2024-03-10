@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>personal</title>
   </head>
 
@@ -12,43 +12,26 @@
     <!-- ||4 pagine da 100vh ||   -->
     <!-- ||4 pagine da 100vh ||   -->
     <!-- ||4 pagine da 100vh ||   -->
-    <div class="container" class="animated-text">
+    <div class="container" class="text">
       <!--one-->
       <section class="one">
-        <div class="animated-text">
-          <!--titolo - nome -->
-          <h1>Gianluca Russo</h1>
+        <div class="text-container">
+          <h2 class="text"></h2>
         </div>
-        <div class="box-animation" id="container">
-          <!--testo animanto-->
-          <span id="text1"></span>
-          <span id="text2"></span>
-        </div>
-        <!--filtro blur -->
-        <svg id="filters">
-          <defs>
-            <filter id="threshold">
-              <feColorMatrix
-                in="SourceGraphic"
-                type="matrix"
-                values="1 0 0 0 0
-                                                0 1 0 0 0
-                                                0 0 1 0 0
-                                                0 0 0 255 -140"
-              />
-            </filter>
-          </defs>
-        </svg>
       </section>
       <!--two-->
       <section class="two">
         <div class="boxcard">
-          <h1>bio</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
-            nostrum, eligendi placeat eaque nisi modi libero aperiam ipsa sit ad
-            et mollitia doloribus ea autem natus vel. Unde, ipsum sapiente?
-          </p>
+          <ul>
+            <li id="abouteme">_portfolio</li><!-- creare link per pagina portfolio.index -->
+            <li>html</li>
+            <li>css</li>
+            <li>js</li>
+            <li>react</li>
+            <li>bootstrap</li>
+            <li>figma</li>
+            
+          </ul>
         </div>
         <div class="boxcard" id="blob">
           <div class="animated-container">
@@ -56,9 +39,90 @@
           </div>
         </div>
       </section>
-      <!--three-->
+      <!--three--><!--three-->
       <section class="three">
-        <h1>Third Page</h1>
+        <div class="container3">
+          <input type="radio" name="slider" id="item-1" checked>
+          <input type="radio" name="slider" id="item-2">
+          <input type="radio" name="slider" id="item-3">
+        <div class="cards">
+          <label class="card" for="item-1" id="song-1">
+            
+              
+              <div id="colorbox1" class="colorbox"></div>
+              
+              <div class="boxtext">
+  
+                  <p>Tema base a scelta</p>
+                  <p>Responsive</p>
+                  <p>Integrazione Brand</p>
+                  <p>Seo</p>
+                  <p>Setting-Up</p>
+                  <p>Training</p>
+              </div>
+            
+          </label>
+          <label class="card" for="item-2" id="song-2">
+              
+              <div id="colorbox2" class="colorbox"></div>
+              <div class="boxtext">
+              <p>Tema base a scelta</p>
+                  <p>Responsive</p>
+                  <p>Integrazione Brand</p>
+                  <p>Seo</p>
+                  <p>Setting-Up</p>
+                  <p>Training</p>
+              </div>
+          </label>
+          <label class="card" for="item-3" id="song-3">
+              
+              <div id="colorbox3" class="colorbox"></div>
+              <div class="boxtext">
+              <p>Tema base a scelta</p>
+                  <p>Responsive</p>
+                  <p>Integrazione Brand</p>
+                  <p>Seo</p>
+                  <p>Setting-Up</p>
+                  <p>Training</p>
+              </div>
+          </label>
+        </div>
+        <div class="player">
+          <div class="upper-part">
+            
+            <div class="info-area" id="test">
+              <label class="song-info" id="song-info-1">
+                <div class="title">website essential kit</div>
+                <div class="sub-line">
+                  <div class="subtitle">cooming soon</div>
+                  <div class="time">500 E</div>
+                </div>
+              </label>
+              <label class="song-info" id="song-info-2">
+                <div class="title">website premium kit</div>
+                <div class="sub-line">
+                  <div class="subtitle">cooming soon</div>
+                  <div class="time">1000 E</div>
+                </div>
+              </label>
+              <label class="song-info" id="song-info-3">
+                <div class="title">gestione</div>
+                <div class="sub-line">
+                  <div class="subtitle">cooming soon</div>
+                  <div class="time">50-200E</div>
+                </div>
+              </label>
+            </div>
+          </div>
+  
+          
+  
+          <div class="progress-bar" >
+            <span class="progress"></span>
+          </div>
+  
+        </div>
+      </div>
       </section>
       <!--four-->
       <section class="four">
@@ -67,6 +131,6 @@
     </div>
     <!--script-->
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/animation.js"></script>
+  
   </body>
 </html>

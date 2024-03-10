@@ -1,79 +1,83 @@
-const elts = {
-    text1: document.getElementById("text1"),
-    text2: document.getElementById("text2")
-};
+// Array di frasi da scrivere
+const textElement = document.querySelector('.text');
 
 const texts = [
-    "web_dev ",
-    "ui_ux",
-    "web3"
-
+  "gianluca_russo//..",
+  "web_dev..",
+  "ui_ux",
+  "pcb"
 ];
 
-const morphTime = 1;
-const cooldownTime = 0.25;
+// Indice della riga attualmente in fase di scrittura
+let lineIndex = 0;
 
-let textIndex = texts.length - 1;
-let time = new Date();
-let morph = 0;
-let cooldown = cooldownTime;
+// Indice del carattere attualmente in fase di scrittura nella riga corrente
+let charIndex = 0;
 
-elts.text1.textContent = texts[textIndex % texts.length];
-elts.text2.textContent = texts[(textIndex + 1) % texts.length];
-
-function setMorphStyles(element, fraction) {
-    element.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-    element.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
-}
-
-function setMorph(fraction) {
-    setMorphStyles(elts.text2, fraction);
-
-    fraction = 1 - fraction;
-
-    setMorphStyles(elts.text1, fraction);
-
-    elts.text1.textContent = texts[textIndex % texts.length];
-    elts.text2.textContent = texts[(textIndex + 1) % texts.length];
-}
-
-function doCooldown() {
-    morph = 0;
-
-    setMorphStyles(elts.text2, 1);
-    setMorphStyles(elts.text1, 0);
-}
-
-function animate() {
-    requestAnimationFrame(animate);
-
-    const newTime = new Date();
-    const shouldIncrementIndex = cooldown > 0;
-    const dt = (newTime - time) / 1000;
-    time = newTime;
-
-    cooldown -= dt;
-
-    if (cooldown <= 0) {
-        if (shouldIncrementIndex) {
-            textIndex++;
-        }
-
-        morph -= cooldown;
-        cooldown = 0;
-
-        let fraction = morph / morphTime;
-
-        if (fraction > 1) {
-            cooldown = cooldownTime;
-            fraction = 1;
-        }
-
-        setMorph(fraction);
+// Funzione per l'animazione di scrittura
+function typeWriter() {
+  // Verifica se ci sono ancora frasi da scrivere
+  if (lineIndex < texts.length) {
+    // Ottieni la frase corrente
+    const text = texts[lineIndex];
+    // Verifica se la frase corrente non è vuota
+    if (text !== "") {
+      // Verifica se ci sono ancora caratteri da scrivere nella frase corrente
+      if (charIndex < text.length) {
+        // Crea un elemento span per ogni carattere e aggiungilo al testo
+        const charElement = document.createElement('span');
+        charElement.textContent = text.charAt(charIndex);
+        textElement.appendChild(charElement);
+        charIndex++;
+        // Imposta un timeout per il prossimo carattere
+        setTimeout(typeWriter, 100); // Regola la velocità di scrittura
+      } else {
+        // Aggiungi una riga vuota e passa alla prossima frase
+        textElement.appendChild(document.createElement('br'));
+        lineIndex++;
+        charIndex = 0; // Resettare l'indice del carattere per la nuova riga
+        // Imposta un timeout per la prossima frase
+        setTimeout(typeWriter, 100); // Regola la velocità di scrittura
+      }
     } else {
-        doCooldown();
+      // Se la frase è vuota, passa alla prossima frase
+      lineIndex++;
+      // Imposta un timeout per la prossima frase
+      setTimeout(typeWriter, 0); // Passa immediatamente alla prossima frase
     }
+  }
 }
 
-animate();
+// Avvia l'animazione di scrittura
+typeWriter();
 
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Seleziona tutti gli input radio
+  const radioInputs = document.querySelectorAll('input[type="radio"]');
+
+  // Aggiungi un listener per l'evento change su ogni input radio
+  radioInputs.forEach(input => {
+    input.addEventListener('change', function() {
+      // Ottieni l'ID dell'input radio selezionato
+      const selectedId = this.id;
+
+      // Ottieni l'indice dell'input radio selezionato
+      const selectedIndex = selectedId.split('-')[1];
+
+      // Trova la colorbox selezionata utilizzando l'indice
+      const colorBox = document.getElementById(`colorbox${selectedIndex}`);
+
+      // Ottieni il colore di sfondo della colorbox selezionata
+      const backgroundColor = window.getComputedStyle(colorBox).backgroundColor;
+
+      // Seleziona la progress-bar e la progress
+      const progressBar = document.querySelector('.progress-bar');
+      const progress = progressBar.querySelector('.progress');
+
+      // Imposta il colore di sfondo della progress-bar e della progress
+      progressBar.style.backgroundColor = backgroundColor;
+      progress.style.backgroundColor = backgroundColor;
+    });
+  });
+});
